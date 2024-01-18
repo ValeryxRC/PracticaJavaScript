@@ -54,21 +54,27 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     // Verificar restricciones antes de enviar el formulario
     var emailInput = document.getElementById("email");
     //Metodo de la API JS
+    //Use CheckValidate
     if (!emailInput.checkValidity()) {
       alert("Por favor, introduce un correo electrónico válido.");
       event.preventDefault(); // Evitar el envío del formulario si hay errores
+    }
+    //Use Validate
+    if (document.getElementById("id1").validity.rangeOverflow) {
+    alert("Por favor, introduce una edad real.");
     }
 });
   
   
 // ii. Cóm podem saber amb JS si un input incompleix alguna restricció?
 
-//Con el método checkValidity() comprueba si las restricciones definidas se cumplen en ese caso si es formato email y no es espacio vacio
-
+/*Con el método checkValidity() comprueba si las restricciones definidas se cumplen,
+en ese caso si es formato email y no es espacio vacio (ejemplo anterior)*/
 
 // iii. Cóm podem saber amb JS si un input incompleix una restricció en concret?
 
-
+/*Con validate de la api de Javascript  la propiedad rangeOverflow,
+comprueba si el número del campo de entrada es mayor*/
 
 // iv. Cóm podem saber amb JS si tot el formulari està correcte?
 
