@@ -10,13 +10,15 @@
 
     <h1><b><u>HACKATON</u></b></h1>
 
-    <form id="myForm" name="myForm" novalidate>
+    <form id="myForm" name="myForm" onsubmit="return validation()" novalidate>
         <input type="text" id="name" name="name" placeholder="Nombre" required style="margin-bottom: 10px;"><br>
         <div id="namer"></div>
         <input type="text" id="surnames" name="surnames" placeholder="Apellidos" required style="margin-bottom: 10px;"><br>
+        <div id="surnamesr"></div>
 
         <input type="email" id="email" name="email" placeholder="Email" required style="margin-bottom: 10px;"><br>
-        
+        <div id="emailr"></div>
+
         <label for="area" >Área de programación</label><br>
         FrontEnd<input type="radio" name="area" value="frontEnd">
         BackEnd<input type="radio" name="area" value="backEnd" style="margin-bottom: 10px;"><br>
@@ -24,7 +26,6 @@
         <label for="password" style="margin-bottom: 10px;">Contraseña</label><br>
         <input type="password" id="password" name="password" required style="margin-bottom: 10px;"><br>
         
-        <button id="button" >ENVIARD</button>
         <input id="submit" type="submit" value="Enviar">
     </form>
     
