@@ -52,7 +52,8 @@
 // i. A on indiquem les restriccions dels inputs del formulari?
 document.getElementById("myForm").addEventListener("submit", function(event) {
     // Verificar restricciones antes de enviar el formulario
-    var emailInput = document.getElementById("email");
+    let emailInput = document.getElementById("email");
+    let edadInput = document.getElementById("year");
     //Metodo de la API JS
     //Use CheckValidate
     if (!emailInput.checkValidity()) {
@@ -60,7 +61,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
       event.preventDefault(); // Evitar el envío del formulario si hay errores
     }
     //Use Validate
-    if (document.getElementById("id1").validity.rangeOverflow) {
+    if (edadInput.validity.rangeOverflow) {
     alert("Por favor, introduce una edad real.");
     }
 });
@@ -73,12 +74,32 @@ en ese caso si es formato email y no es espacio vacio (ejemplo anterior)*/
 
 // iii. Cóm podem saber amb JS si un input incompleix una restricció en concret?
 
-/*Con validate de la api de Javascript  la propiedad rangeOverflow,
-comprueba si el número del campo de entrada es mayor*/
+/*Con validate de la api de Javascript, en este caso  la propiedad rangeOverflow de validate,
+comprueba si el número del campo de entrada es mayor (ejemplo anterior)*/
 
 // iv. Cóm podem saber amb JS si tot el formulari està correcte?
-
-
+/*Condicionando el evento de enviar el formulario con el metodo CheckValidity() */
 
 // v. Què hem de fer per modificar el text d’error d’un input?
+document.getElementById("myForm").addEventListener("invalid", function(event) {
+  // Modificar el texto de error para el campo específico
+  let invalidField = event.target;
+  let customErrorMessage = "Por favor, completa este campo correctamente.";
+
+  switch (invalidField.id) {
+      case "email":
+          customErrorMessage = "Por favor, introduce un correo electrónico válido.";
+          break;
+      case "year":
+          customErrorMessage = "Por favor, introduce una edad real.";
+          break;
+  }
+  // Establece el mensaje de error personalizado
+  invalidField.setCustomValidity(customErrorMessage);
+});
+
+document.getElementById("myForm").addEventListener("input", function(event) {
+  // Limpiar el mensaje de error personalizado cuando el usuario comienza a corregir el campo
+  event.target.setCustomValidity("");
+});
 
